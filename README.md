@@ -14,7 +14,8 @@
     npm install
 
 #### Run iOS
+    install xcode
     react-native run-ios
 #### Run Android
     install android studio: [Get started](https://facebook.github.io/react-native/docs/getting-started.html#content)
-    
+    react-native run-android
