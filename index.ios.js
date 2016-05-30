@@ -12,6 +12,9 @@ import {
   ListView,
   View
 } from 'react-native';
+// import {
+//   MapView
+// } from 'react-native-maps';
 
 const REQUEST_URL = "https://fy34jriqn4.execute-api.eu-central-1.amazonaws.com/prod/react_resource";
 
@@ -23,6 +26,12 @@ class SpikeReactNative extends Component {
         rowHasChanged: (row1, row2) => row1 !== row2,
       }),
       loaded: false,
+      // region: {
+      //   latitude: 37.78825,
+      //   longitude: -122.4324,
+      //   latitudeDelta: 0.0922,
+      //   longitudeDelta: 0.0421,
+      // }
     };
   }
 
@@ -54,10 +63,21 @@ class SpikeReactNative extends Component {
       .then((pharmacies) => {
         this.setState({
           pharmacies: this.state.pharmacies.cloneWithRows(pharmacies),
+          //pharmacies: pharmacies,
           loaded: true,
+          // region: {
+          //   latitude: latitude,
+          //   longitude: longitude,
+          //   latitudeDelta: 0.0922,
+          //   longitudeDelta: 0.0421,
+          // }
         });
       })
       .done();
+  }
+
+  onRegionChange(region) {
+    this.setState({region});
   }
 
   render() {
@@ -72,6 +92,7 @@ class SpikeReactNative extends Component {
         style={styles.listView}
       />
     );
+    // return renderMapView();
   }
 
   renderLoadingView() {
@@ -95,6 +116,18 @@ class SpikeReactNative extends Component {
     );
   }
 
+  // renderMapView() {
+  //    return (
+  //       <MapView
+  //        initialRegion={{
+  //          latitude: 37.78825,
+  //          longitude: -122.4324,
+  //          latitudeDelta: 0.0922,
+  //          longitudeDelta: 0.0421
+  //        }}
+  //       />
+  //    );
+  // }
 }
 
 var styles = StyleSheet.create({
